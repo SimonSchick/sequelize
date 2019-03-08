@@ -103,6 +103,10 @@ describe(Support.getTestDialectTeaser('SQL'), () => {
         options = undefined;
       }
 
+      if (options && options.field && options.field.type) {
+        options.field.type = current.normalizeDataType(options.field.type);
+      }
+
       it(`${String(key)}: ${util.inspect(value, { depth: 10 })}${options && `, ${util.inspect(options)}` || ''}`, () => {
         return expectsql(sql.whereItemQuery(key, value, options), expectation);
       });

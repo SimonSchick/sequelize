@@ -68,7 +68,7 @@ export function removeTicks(s: string, tickChar?: string): string;
  * Wraps a constructor to not need the `new` keyword using a proxy.
  * Only used for data types.
  */
-export function implicitNew<T extends new (...args: any[]) => any>(ctor: T): T & {
+export function classToInvokable<T extends new (...args: any[]) => any>(ctor: T): T & {
   (...args: ConstructorParameters<T>): T;
 }
 
